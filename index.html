@@ -5,23 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Star Wars</title>
+    <link href="https://fonts.cdnfonts.com/css/star-wars" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Поиск по вселенной StarWars</h1>    
-    <form class="form">
-        <select id="select">
-            <option value="films">Фильмы</option>
-            <option value="people">Люди</option>
-            <option value="planets">Планеты</option>
-            <option value="species">Другие виды</option>
-            <option value="starships">Звездные корабли</option>
-            <option value="vehicles">Транспортные средства</option>
-        </select>
-        <input type="number" placeholder="Введите номер" max="10" class="number">
-        <button class="btn">Искать!</button>
-    </form>
-    <div class="info"></div>
-    <div class="error"></div>
+    <div class="background stars"></div>
+    <div class="wrapper">
+        <h1>Star Wars</h1>    
+        <form class="form">
+            <select id="select">
+                <option value="films">Фильмы</option>
+                <option value="people">Люди</option>
+                <option value="planets">Планеты</option>
+                <option value="species">Другие виды</option>
+                <option value="starships">Звездные корабли</option>
+                <option value="vehicles">Транспортные средства</option>
+            </select>
+            <input type="number" placeholder="Введите номер" max="10" class="number">
+            <button class="btn">Start</button>
+        </form>
+        <div class="info">sdfjlzdjflzkdfjlkdf</div>
+        <div class="error">error</div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
