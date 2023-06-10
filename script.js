@@ -3,6 +3,7 @@ const btn = document.querySelector('btn');
 const selectList = document.getElementById('select').value;
 const number = document.querySelector('number').value;
 const infoBlock = document.querySelector('info');
+const errorDiv = document.querySelector('error');
 
 //создаю функцию для фетч запроса
 function getInfo () {
@@ -24,5 +25,6 @@ btn.addEventListener('click', () => {
         getInfo();
     } catch(err) {
         alert('Ошибка сервера!');
+        errorDiv.innerHTML = err;
     }
 })
