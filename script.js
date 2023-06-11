@@ -9,6 +9,11 @@ document.querySelector('.form').addEventListener('submit', event => {
     const errorDiv = document.querySelector('.error');
     const load = document.querySelector('.load');
 
+//проверка на пустые поля
+if (number === '') {
+    infoBlock.textContent = `Выберите номер`;
+    return
+}
 //сообщение о загрузке
     infoBlock.textContent = 'Загрузка ...';
     
@@ -23,8 +28,17 @@ document.querySelector('.form').addEventListener('submit', event => {
         .then((res) => {
             console.log(res);
             errorDiv.innerHTML = '';            
-            infoBlock.innerHTML = `
-            <div>${res}</div>`;
+            /* infoBlock.innerHTML = `
+            <div>${res.name}</div>`; */
+            if (selectList !== 'films') {
+                infoBlock.innerHTML = `
+                    <div>${res.name}</div>
+                `;
+            } else if (selectList === 'films') {
+                infoBlock.innerHTML = `
+                <div>${res.title}</div>
+            `;
+            }
         })
         .catch((error) => {
             infoBlock.textContent = '';

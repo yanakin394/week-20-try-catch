@@ -13,6 +13,9 @@ h1,
     color: #fed34f;
     font-family: 'Star Wars', sans-serif;
 }
+.number{
+    width: 110px;
+}
 .btn {
     width: 150px;
     font-size: 25px;
