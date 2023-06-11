@@ -1,30 +1,37 @@
+document.querySelector('.form').addEventListener('submit', event => { 
+    event.preventDefault();
+
 //беру необходимые элементы
-const btn = document.querySelector('btn');
-const selectList = document.getElementById('select').value;
-const number = document.querySelector('number').value;
-const infoBlock = document.querySelector('info');
-const errorDiv = document.querySelector('error');
+    const btn = document.querySelector('.btn');
+    const selectList = document.getElementById('select').value;
+    const number = document.querySelector('.number').value;
+    const infoBlock = document.querySelector('.info');
+    const errorDiv = document.querySelector('.error');
+    const load = document.querySelector('.load');
 
-//создаю функцию для фетч запроса
-function getInfo () {
-    fetch ('http swapi.dev/api/`${selectList}`/${number}/'), {
-        body: JSON.stringify(res),
-    }
-    .then((res) => {
-        console.log(res)
-        infoBlock.innerHTML = res;
-    })
-    .catch((err) => {
-    console.log('Произошла ошибка');
-    });
-}
-
-// добавляю обработчик, вызываю там функцию запроса и ловлю ошибку, если она есть
-btn.addEventListener('click', () => {
-    try {
-        getInfo();
-    } catch(err) {
-        alert('Ошибка сервера!');
-        errorDiv.innerHTML = err;
-    }
+//сообщение о загрузке
+    infoBlock.textContent = 'Загрузка ...';
+    
+//создаю  фетч запрос
+    fetch (`http://swapi.dev/api/${selectList}/${number}/`)
+        .then((res) => {
+            if(!res.ok) {
+                throw new Error('Сервер не доступен!');
+            }
+            return res.json();
+        })
+        .then((res) => {
+            console.log(res);
+            errorDiv.innerHTML = '';            
+            infoBlock.innerHTML = `
+            <div>${res}</div>`;
+        })
+        .catch((error) => {
+            infoBlock.textContent = '';
+            errorDiv.innerHTML = `
+            <div><span>Ошибка:</span>${error.message}</div>`;
+            })
+        .finally(() => {
+            number.value = '';
+        })
 })
